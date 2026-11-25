@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SkillGap AI | Admin Dashboard</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fc;
+    color: #243451;
+}
+
+header {
+    background: white;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 15px rgba(0,0,0,.05);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: #102957;
+}
+
+.logo span {
+    color: #2563eb;
+}
+
+.logout {
+    background: #fff1f2;
+    color: #dc2626;
+    padding: 11px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.container {
+    max-width: 1250px;
+    margin: 40px auto;
+    padding: 0 22px;
+}
+
+.welcome {
+    margin-bottom: 30px;
+}
+
+.welcome h1 {
+    color: #102957;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.welcome p {
+    color: #718096;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #e5eaf2;
+    box-shadow: 0 8px 25px rgba(28,64,120,.05);
+    border-top: 4px solid #2563eb;
+}
+
+.card h3 {
+    font-size: 14px;
+    color: #718096;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    font-size: 32px;
+    color: #102957;
+}
+
+.section {
+    background: white;
+    margin-top: 30px;
+    padding: 28px;
+    border-radius: 15px;
+    border: 1px solid #e5eaf2;
+    box-shadow: 0 8px 25px rgba(28,64,120,.05);
+}
+
+.section h2 {
+    color: #102957;
+    margin-bottom: 22px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 16px 13px;
+    text-align: left;
+    border-bottom: 1px solid #edf0f5;
+    font-size: 13px;
+}
+
+th {
+    background: #eff6ff;
+    color: #1743bd;
+    font-weight: 700;
+}
+
+td {
+    color: #52617a;
+}
+
+.status {
+    display: inline-block;
+    background: #dcfce7;
+    color: #15803d;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+select {
+    padding: 9px;
+    border: 1px solid #dce3ef;
+    border-radius: 7px;
+    background: white;
+    color: #243451;
+    outline: none;
+}
+
+select:focus {
+    border-color: #2563eb;
+}
+
+.update-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+.update-btn:hover {
+    background: #1743bd;
+}
+
+.home {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 13px 22px;
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.home:hover {
+    background: #1743bd;
+}
+
+.empty {
+    color: #888;
+    padding: 25px;
+    text-align: center;
+}
+
+footer {
+    background: #102957;
+    color: #cbd5e1;
+    text-align: center;
+    padding: 28px 15px;
+    margin-top: 60px;
+    font-size: 13px;
+}
+
+@media(max-width:600px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .container {
+        padding: 0 14px;
+        margin: 25px auto;
+    }
+
+    .welcome h1 {
+        font-size: 24px;
+    }
+
+    .section {
+        padding: 20px 14px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SkillGap <span>AI</span> | Admin</div>
+    <a href="{{ url_for('admin_logout') }}" class="logout">
+        Logout →
+    </a>
+</header>
+
+<div class="container">
+
+    <div class="welcome">
+        <h1>Welcome, Administrator 👋</h1>
+        <p>Monitor learners, employment outcomes and platform performance.</p>
+    </div>
+
+    <div class="stats">
+
+        <div class="card">
+            <h3>👥 Total Learners</h3>
+            <h2>{{ total_learners }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>💼 Employed Learners</h3>
+            <h2>{{ employed_learners }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>🔍 Job Seeking</h3>
+            <h2>{{ job_seeking }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>🎓 Higher Studies</h3>
+            <h2>{{ higher_studies }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>📊 Employment Rate</h3>
+            <h2>
+                {{ ((employed_learners / total_learners * 100) if total_learners else 0) | round(1) }}%
+            </h2>
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <h2>📋 Registered Learners</h2>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Job Role</th>
+                        <th>Status</th>
+                        <th>Progress</th>
+                        <th>Update Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for learner in learners %}
+
+                    <tr>
+                        <td>{{ learner['id'] }}</td>
+                        <td>{{ learner['name'] }}</td>
+                        <td>{{ learner['email'] }}</td>
+                        <td>{{ learner['job_role'] }}</td>
+
+                        <td>
+                            <span class="status">
+                                {{ learner['employment_status'] }}
+                            </span>
+                        </td>
+
+                        <td>{{ learner['progress'] }}%</td>
+
+                        <td>
+
+                            <form method="POST"
+                                action="{{ url_for('update_status', learner_id=learner['id']) }}">
+
+                                <select name="status" required>
+
+                                    {% for option in ['Job Seeking', 'Employed', 'Higher Studies', 'Training'] %}
+
+                                    <option value="{{ option }}"
+                                        {% if learner['employment_status'] == option %}selected{% endif %}>
+                                        {{ option }}
+                                    </option>
+
+                                    {% endfor %}
+
+                                </select>
+
+                                <button type="submit" class="update-btn">
+                                    Update
+                                </button>
+
+                            </form>
+
+                        </td>
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+                        <td colspan="7" class="empty">
+                            No registered learners found yet.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <h2>⚙️ Admin Control Panel</h2>
+
+        <p>
+            Manage learner information and monitor employment
+            outcomes through your SkillGap AI platform.
+        </p>
+
+        <a href="/" class="home">
+            Visit Main Website →
+        </a>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 SkillGap AI. All Rights Reserved.
+</footer>
+
+</body>
+</html>

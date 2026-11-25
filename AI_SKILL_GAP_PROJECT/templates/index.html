@@ -1,0 +1,1375 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SkillGap AI | Career Intelligence</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --navy: #102957;
+    --blue: #2563eb;
+    --light-blue: #eff6ff;
+    --text: #253653;
+    --muted: #718096;
+    --white: #ffffff;
+    --border: #e5eaf2;
+    --shadow: 0 12px 35px rgba(28, 64, 120, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #f7faff;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    background: white;
+    min-height: 78px;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 800;
+    color: var(--navy);
+}
+
+.logo span {
+    color: var(--blue);
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: #52617a;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--blue);
+}
+
+/* HERO */
+
+.hero {
+    padding: 100px 7% 85px;
+    background:
+        radial-gradient(circle at 85% 20%, #dbeafe 0, transparent 32%),
+        linear-gradient(120deg, #ffffff 10%, #eff6ff 100%);
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 1150px;
+    margin: auto;
+}
+
+.tag, .section-label, .dashboard-label {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 66px);
+    line-height: 1.13;
+    letter-spacing: -2px;
+    color: var(--navy);
+    margin: 27px 0 22px;
+    max-width: 850px;
+}
+
+.hero h1 span {
+    color: var(--blue);
+}
+
+.hero-content > p {
+    max-width: 650px;
+    font-size: 17px;
+    color: var(--muted);
+    margin-bottom: 30px;
+    line-height: 1.9;
+}
+
+.primary-btn {
+    display: inline-block;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(120deg, #2563eb, #1743bd);
+    color: white;
+    padding: 16px 29px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 7px 18px rgba(37,99,235,0.2);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(37,99,235,0.25);
+}
+
+.hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 55px;
+    margin-top: 55px;
+}
+
+.hero-stats div {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-stats strong {
+    color: var(--navy);
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.hero-stats span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* FEATURES */
+
+.features {
+    padding: 85px 7%;
+    background: white;
+    text-align: center;
+}
+
+.features h2, .section-heading h2 {
+    font-size: 34px;
+    color: var(--navy);
+    margin-bottom: 12px;
+}
+
+.subtitle, .section-heading > p {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.feature-grid {
+    max-width: 1150px;
+    margin: 45px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.feature-card {
+    padding: 30px 23px;
+    text-align: left;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--shadow);
+    border-color: #bfdbfe;
+}
+
+.feature-icon {
+    width: 53px;
+    height: 53px;
+    background: var(--light-blue);
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 17px;
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+/* ANALYSIS SECTION */
+
+.analysis {
+    padding: 85px 7%;
+    background: #f4f7fc;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    margin-top: 17px;
+}
+
+.upload-card {
+    max-width: 760px;
+    margin: auto;
+    background: white;
+    padding: 42px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.upload-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 18px;
+    display: grid;
+    place-items: center;
+    background: #eff6ff;
+    border-radius: 17px;
+    font-size: 30px;
+}
+
+.upload-card > h3 {
+    text-align: center;
+    color: var(--navy);
+    font-size: 23px;
+}
+
+.upload-description {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    margin: 9px 0 30px;
+}
+
+.upload-card label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 21px 0 9px;
+}
+
+.upload-card input[type="file"],
+.upload-card select,
+.upload-card textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #dce3ef;
+    border-radius: 9px;
+    background: #fbfdff;
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: 0.2s;
+}
+
+.upload-card input:focus,
+.upload-card select:focus,
+.upload-card textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px #dbeafe;
+}
+
+.upload-card textarea {
+    resize: vertical;
+    line-height: 1.7;
+}
+
+.input-help {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 9px;
+}
+
+.or-divider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #94a3b8;
+    margin: 25px 0;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 27px;
+}
+
+/* ERRORS */
+
+.error-card {
+    max-width: 760px;
+    margin: 25px auto;
+    padding: 20px;
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    border-radius: 12px;
+    color: #be123c;
+}
+
+.error-card h3 {
+    margin-bottom: 8px;
+}
+
+/* RESULTS */
+
+.dashboard {
+    max-width: 1050px;
+    margin: 60px auto 0;
+}
+
+.dashboard-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dashboard-heading h2 {
+    color: var(--navy);
+    font-size: 30px;
+    margin: 15px 0 8px;
+}
+
+.dashboard-heading p {
+    color: var(--muted);
+}
+
+.score-card {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+    padding: 35px;
+    background: white;
+    border-radius: 17px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.score-circle {
+    width: 165px;
+    height: 165px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: conic-gradient(
+        #2563eb var(--score),
+        #e8eef8 0
+    );
+}
+
+.score-inner {
+    width: 133px;
+    height: 133px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-inner strong {
+    font-size: 34px;
+    color: var(--blue);
+}
+
+.score-inner span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.score-details {
+    flex: 1;
+}
+
+.score-details h3 {
+    color: var(--navy);
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.score-details p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.progress-track, .comparison-track {
+    height: 10px;
+    background: #e8eef8;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 17px;
+}
+
+.progress-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+    border-radius: 20px;
+    transition: width 1s ease;
+}
+
+.score-caption {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 12px;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.summary-card {
+    background: white;
+    padding: 24px;
+    border-radius: 13px;
+    text-align: center;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.summary-card > span {
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.summary-card h3 {
+    font-size: 30px;
+    margin: 5px 0;
+    color: var(--navy);
+}
+
+.summary-card p {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.green-card > span { color: #16a34a; }
+.red-card > span { color: #dc2626; }
+.purple-card > span { color: #7c3aed; }
+
+.dashboard-panel {
+    background: white;
+    padding: 30px;
+    margin-top: 22px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.dashboard-panel h3 {
+    color: var(--navy);
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.panel-subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.skill-tag, .matched-tag, .missing-tag {
+    display: inline-block;
+    padding: 9px 14px;
+    border-radius: 7px;
+    margin: 5px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.skill-tag {
+    color: #1d4ed8;
+    background: #eff6ff;
+}
+
+.matched-tag {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.missing-tag {
+    color: #b45309;
+    background: #fef3c7;
+}
+
+.comparison-item {
+    margin-top: 20px;
+}
+
+.comparison-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-match { color: #16a34a; }
+.status-missing { color: #dc2626; }
+
+.comparison-fill {
+    height: 100%;
+    border-radius: 20px;
+}
+
+.matched-fill { background: #22c55e; }
+.missing-fill { background: #f59e0b; }
+
+.recommendation-item {
+    display: flex;
+    gap: 17px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.recommendation-item:last-child {
+    border-bottom: none;
+}
+
+.recommendation-number {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    background: #dbeafe;
+    color: #1d4ed8;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    font-weight: 800;
+}
+
+.recommendation-item h4 {
+    color: var(--navy);
+    margin-bottom: 5px;
+}
+
+.recommendation-item p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.dashboard-panel details summary {
+    cursor: pointer;
+    color: var(--navy);
+    font-weight: 700;
+}
+
+.dashboard-panel pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    max-height: 350px;
+    overflow-y: auto;
+    background: #f4f7fc;
+    padding: 18px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.download-section {
+    margin-top: 25px;
+    padding: 35px;
+    text-align: center;
+    background: #eaf2ff;
+    border-radius: 15px;
+}
+
+.download-section h3 {
+    color: var(--navy);
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.download-section p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 14px 25px;
+    background: #1743bd;
+    color: white;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    background: #102957;
+    transform: translateY(-2px);
+}
+
+/* FOOTER */
+
+footer {
+    background: #102957;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 0;
+}
+
+footer h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #cbd5e1;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media(max-width: 900px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+
+    .navbar {
+        padding: 15px 5%;
+        min-height: 68px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .nav-links {
+        gap: 13px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .hero {
+        padding: 65px 6%;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+
+    .hero-content > p {
+        font-size: 14px;
+    }
+
+    .hero-stats {
+        gap: 25px;
+    }
+
+    .features, .analysis {
+        padding: 60px 5%;
+    }
+
+    .features h2, .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .feature-card {
+        padding: 23px;
+    }
+
+    .upload-card {
+        padding: 25px 18px;
+    }
+
+    .score-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+        padding: 25px 15px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-panel {
+        padding: 22px 16px;
+    }
+
+    .dashboard-heading h2 {
+        font-size: 25px;
+    }
+
+    .download-section {
+        padding: 25px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav class="navbar">
+
+    <a href="/" class="logo">SkillGap <span>AI</span></a>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="#features">Features</a>
+        <a href="#analysis">Analysis</a>
+        {% if session.get('user_id') %}
+            <a href="{{ url_for('learner_dashboard') }}">My Dashboard</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Learner Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+        <a href="{{ url_for('admin_login') }}">Admin</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO SECTION -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <span class="tag">AI POWERED CAREER INTELLIGENCE</span>
+
+        <h1>
+            Discover Your Skills.<br>
+            <span>Build Your Future.</span>
+        </h1>
+
+        <p>
+            Upload your resume, explore job opportunities,
+            identify missing skills and build a learning
+            roadmap for your dream career.
+        </p>
+
+        <a href="#analysis" class="primary-btn">
+            Start Skill Analysis →
+        </a>
+
+        <div class="hero-stats">
+
+            <div>
+                <strong>20+</strong>
+                <span>Job Roles</span>
+            </div>
+
+            <div>
+                <strong>70+</strong>
+                <span>Recognized Skills</span>
+            </div>
+
+            <div>
+                <strong>PDF</strong>
+                <span>Report Download</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- FEATURES -->
+
+<section id="features" class="features">
+
+    <span class="section-label">OUR CAPABILITIES</span>
+
+    <h2>What Our System Offers</h2>
+
+    <p class="subtitle">
+        Intelligent tools to improve your employability.
+    </p>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <div class="feature-icon">📄</div>
+            <h3>Resume Analysis</h3>
+            <p>
+                Extract skills automatically from PDF
+                and DOCX resumes.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Skill Gap Detection</h3>
+            <p>
+                Identify matched skills and skills
+                you need to improve.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Job Matching</h3>
+            <p>
+                Compare your profile with job requirements
+                and discover your skill match.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>Learning Roadmap</h3>
+            <p>
+                Get recommendations for developing
+                missing skills.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ANALYSIS FORM -->
+
+<section id="analysis" class="analysis">
+
+    <div class="section-heading">
+
+        <span class="section-label">CAREER ASSESSMENT</span>
+
+        <h2>Start Your Skill Gap Analysis</h2>
+
+        <p>
+            Upload your resume and select a job role
+            or paste a custom job description.
+        </p>
+
+    </div>
+
+
+    <div class="upload-card">
+
+        <div class="upload-icon">📁</div>
+
+        <h3>Upload Your Resume</h3>
+
+        <p class="upload-description">
+            Supported formats: PDF and DOCX | Maximum size: 5 MB
+        </p>
+
+        <form action="{{ url_for('analyze') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <label for="resume">Choose Your Resume</label>
+
+            <input
+                type="file"
+                id="resume"
+                name="resume"
+                accept=".pdf,.docx"
+                required
+            >
+
+            <label for="job_role">Select Your Target Job Role</label>
+
+            <select id="job_role" name="job_role">
+
+                <option value="">Select a Job Role</option>
+
+                {% for role in job_roles %}
+                <option value="{{ role }}"
+                    {% if job_role == role %}selected{% endif %}>
+                    {{ role }}
+                </option>
+                {% endfor %}
+
+            </select>
+
+            <div class="or-divider">
+                <span>OR</span>
+            </div>
+
+            <label for="job_description">
+                Paste a Custom Job Description
+            </label>
+
+            <textarea
+                id="job_description"
+                name="job_description"
+                rows="7"
+                placeholder="Paste the complete job description here...
+
+Example:
+We are looking for a Python Developer.
+Required skills:
+Python, SQL, Flask, Django, Git, REST API and OOP."
+            ></textarea>
+
+            <small class="input-help">
+                Custom job description takes priority
+                over the selected job role.
+            </small>
+
+            <button type="submit" class="primary-btn submit-btn">
+                Analyse My Skills →
+            </button>
+
+        </form>
+
+    </div>
+
+
+    {% if error %}
+
+    <div class="error-card">
+        <h3>⚠️ Analysis Error</h3>
+        <p>{{ error }}</p>
+    </div>
+
+    {% endif %}
+
+
+    {% if match_percentage is defined and match_percentage is not none %}
+
+    <div class="dashboard" id="report">
+
+        <div class="dashboard-heading">
+
+            <span class="dashboard-label">YOUR ANALYSIS RESULTS</span>
+
+            <h2>Skill Gap Analysis Report</h2>
+
+            <p>
+                Target Job:
+                <strong>{{ job_role }}</strong>
+            </p>
+
+        </div>
+
+
+        <div class="score-card">
+
+            <div class="score-circle"
+                 style="--score: {{ match_percentage }}%;">
+
+                <div class="score-inner">
+                    <strong>{{ match_percentage }}%</strong>
+                    <span>Skill Match</span>
+                </div>
+
+            </div>
+
+            <div class="score-details">
+
+                <h3>Your Career Match Score</h3>
+
+                <p>
+                    You matched {{ matched_skills|length }}
+                    out of {{ required_skills|length }}
+                    required job skills.
+                </p>
+
+                <div class="progress-track">
+                    <div class="progress-fill"
+                         data-progress="{{ match_percentage }}">
+                    </div>
+                </div>
+
+                <span class="score-caption">
+                    This score measures recognized skill overlap,
+                    not your overall employability.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-panel">
+            <h3>🧠 TF-IDF + Cosine Similarity</h3>
+            <p class="panel-subtitle">
+                This score compares the wording and term patterns in your resume and the target job text.
+                It is an additional text-similarity measure, not a replacement for the skill-match score.
+            </p>
+            <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+                <strong style="font-size:32px;color:#2563eb;">{{ cosine_similarity_percentage|default(0) }}%</strong>
+                <span style="color:var(--muted);font-size:13px;">TF-IDF cosine similarity</span>
+            </div>
+        </div>
+
+        <div class="summary-grid">
+
+            <div class="summary-card green-card">
+                <span>✓</span>
+                <h3>{{ matched_skills|length }}</h3>
+                <p>Matched Skills</p>
+            </div>
+
+            <div class="summary-card red-card">
+                <span>!</span>
+                <h3>{{ missing_skills|length }}</h3>
+                <p>Missing Skills</p>
+            </div>
+
+            <div class="summary-card purple-card">
+                <span>✦</span>
+                <h3>{{ detected_skills|length }}</h3>
+                <p>Detected Skills</p>
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-panel">
+
+            <h3>🔍 Skills Identified in Your Resume</h3>
+
+            <p class="panel-subtitle">
+                These are the skills recognized from your resume.
+            </p>
+
+            {% if detected_skills %}
+
+                {% for skill in detected_skills %}
+                    <span class="skill-tag">{{ skill }}</span>
+                {% endfor %}
+
+            {% else %}
+
+                <p>No recognized skills found.</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="dashboard-panel">
+
+            <h3>✅ Matched Skills</h3>
+
+            <p class="panel-subtitle">
+                Skills found in both your resume and job requirements.
+            </p>
+
+            {% if matched_skills %}
+
+                {% for skill in matched_skills %}
+                    <span class="matched-tag">✓ {{ skill }}</span>
+                {% endfor %}
+
+            {% else %}
+
+                <p>No matching skills found.</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="dashboard-panel">
+
+            <h3>📌 Missing Skills</h3>
+
+            <p class="panel-subtitle">
+                Skills to develop for your selected target job.
+            </p>
+
+            {% if missing_skills %}
+
+                {% for skill in missing_skills %}
+                    <span class="missing-tag">+ {{ skill }}</span>
+                {% endfor %}
+
+            {% else %}
+
+                <p>
+                    Excellent! All recognized job requirements matched.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="dashboard-panel">
+
+            <h3>📊 Skill Requirement Comparison</h3>
+
+            <p class="panel-subtitle">
+                Visual comparison of your recognized skills.
+            </p>
+
+            {% for skill in required_skills %}
+
+            <div class="comparison-item">
+
+                <div class="comparison-heading">
+
+                    <span>{{ skill }}</span>
+
+                    {% if skill in matched_skills %}
+                        <span class="status-match">Matched</span>
+                    {% else %}
+                        <span class="status-missing">Missing</span>
+                    {% endif %}
+
+                </div>
+
+                <div class="comparison-track">
+
+                    <div class="comparison-fill
+                        {% if skill in matched_skills %}
+                            matched-fill
+                        {% else %}
+                            missing-fill
+                        {% endif %}"
+                        style="width: 100%;">
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <div class="dashboard-panel recommendation-panel">
+
+            <h3>🚀 Your Learning Roadmap</h3>
+
+            <p class="panel-subtitle">
+                Suggested learning activities for missing skills.
+            </p>
+
+            {% if recommendations %}
+
+                {% for skill, recommendation in recommendations.items() %}
+
+                <div class="recommendation-item">
+
+                    <div class="recommendation-number">
+                        {{ loop.index }}
+                    </div>
+
+                    <div>
+                        <h4>{{ skill }}</h4>
+                        <p>{{ recommendation }}</p>
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>
+                    You have matched all the recognized required skills!
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="dashboard-panel">
+
+            <h3>📋 Complete Job Requirements</h3>
+
+            {% for skill in required_skills %}
+                <span class="skill-tag">{{ skill }}</span>
+            {% endfor %}
+
+        </div>
+
+
+        <div class="dashboard-panel">
+
+            <details>
+
+                <summary>📄 View Extracted Resume Content</summary>
+
+                <pre>{{ extracted_text }}</pre>
+
+            </details>
+
+        </div>
+
+
+        <div class="download-section">
+
+            <h3>Download Your Analysis Report</h3>
+
+            <p>
+                Save your personalized skill-gap report
+                as a PDF document.
+            </p>
+
+            {% if session.get('user_id') %}
+                {% if not session.get('report_saved_id') %}
+                <form method="POST" action="{{ url_for('save_report') }}" style="margin-bottom:14px;">
+                    <button type="submit" class="download-btn">Save this analysis to my account</button>
+                </form>
+                {% else %}
+                <p style="margin-bottom:14px;color:#15803d;">✓ This analysis is saved in your account.</p>
+                {% endif %}
+            {% else %}
+                <p style="margin-bottom:14px;">Want to save this report and track your progress?
+                    <a href="{{ url_for('register') }}">Create an account</a> or
+                    <a href="{{ url_for('login') }}">log in</a> after analysis.
+                </p>
+            {% endif %}
+            <a href="{{ url_for('download_report') }}"
+               class="download-btn">
+                📥 Download PDF Report
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>SkillGap AI</h3>
+
+    <p>
+        AI-Driven Skill Gap Analysis and Employment
+        Outcome Tracking System
+    </p>
+
+    <p>© 2026 SkillGap AI. All Rights Reserved.</p>
+
+</footer>
+
+
+<script>
+
+// Animate skill match progress bar
+
+document.querySelectorAll(".progress-fill").forEach(function(bar) {
+
+    const percentage = Number(bar.dataset.progress);
+
+    if (Number.isFinite(percentage)) {
+
+        bar.style.width =
+            Math.max(0, Math.min(100, percentage)) + "%";
+
+    }
+
+});
+
+
+// Resume file validation
+
+const resumeInput = document.getElementById("resume");
+
+resumeInput.addEventListener("change", function() {
+
+    if (this.files.length > 0) {
+
+        const file = this.files[0];
+
+        const validType = /\.(pdf|docx)$/i.test(file.name);
+
+        if (!validType) {
+            alert("Please upload a PDF or DOCX file.");
+            this.value = "";
+            return;
+        }
+
+        if (file.size > 5 * 1024 * 1024) {
+            alert("Please select a file smaller than 5 MB.");
+            this.value = "";
+        }
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | SkillGap AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #101b3d, #3156a5);
+            padding: 20px;
+        }
+
+        .login-box {
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            padding: 40px 30px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #172b57;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #777;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 17px;
+            border: 1px solid #ddd;
+            border-radius: 9px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: 2px solid #5275d5;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #3156a5;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #203f85;
+        }
+
+        .error {
+            background: #ffe5e5;
+            color: #c62828;
+            padding: 10px;
+            border-radius: 7px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-box">
+        <div class="icon">🔐</div>
+
+        <h2>Admin Login</h2>
+        <p>SkillGap AI Management Portal</p>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('admin_login') }}">
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter Username"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter Password"
+                required
+            >
+
+            <button type="submit">Login to Dashboard</button>
+        </form>
+
+        <div class="footer">
+            © 2026 SkillGap AI | Admin Portal
+        </div>
+    </div>
+</body>
+</html>

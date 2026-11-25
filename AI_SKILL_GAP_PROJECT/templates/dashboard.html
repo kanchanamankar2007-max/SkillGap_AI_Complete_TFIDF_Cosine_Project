@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employment Dashboard | SkillGap AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fc;
+            color: #26324a;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #263b80;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #718096;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .card p {
+            color: #718096;
+            margin-bottom: 12px;
+        }
+
+        .number {
+            font-size: 35px;
+            font-weight: bold;
+            color: #4357b8;
+        }
+
+        .section {
+            background: white;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #263b80;
+            margin-bottom: 22px;
+        }
+
+        .status-item {
+            margin-bottom: 22px;
+        }
+
+        .status-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .status-progress,
+        .learner-progress {
+            width: 100%;
+            height: 14px;
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .status-progress::-webkit-progress-bar,
+        .learner-progress::-webkit-progress-bar {
+            background: #e9edf5;
+            border-radius: 20px;
+        }
+
+        .status-progress::-webkit-progress-value,
+        .learner-progress::-webkit-progress-value {
+            background: #4357b8;
+            border-radius: 20px;
+        }
+
+        .employed::-webkit-progress-value {
+            background: #20a779;
+        }
+
+        .seeking::-webkit-progress-value {
+            background: #6478d9;
+        }
+
+        .training::-webkit-progress-value {
+            background: #e7a43b;
+        }
+
+        .status-progress::-moz-progress-bar,
+        .learner-progress::-moz-progress-bar {
+            background: #4357b8;
+            border-radius: 20px;
+        }
+
+        .employed::-moz-progress-bar {
+            background: #20a779;
+        }
+
+        .seeking::-moz-progress-bar {
+            background: #6478d9;
+        }
+
+        .training::-moz-progress-bar {
+            background: #e7a43b;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 950px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px 12px;
+            text-align: left;
+            border-bottom: 1px solid #edf0f5;
+            vertical-align: middle;
+        }
+
+        th {
+            background: #f0f3fa;
+            color: #344477;
+        }
+
+        input, select {
+            padding: 10px;
+            border: 1px solid #d5dbea;
+            border-radius: 7px;
+            width: 100%;
+            margin-bottom: 8px;
+            background: white;
+        }
+
+        button {
+            background: #4357b8;
+            color: white;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #293d91;
+        }
+
+        .links {
+            margin-top: 25px;
+        }
+
+        .links a {
+            display: inline-block;
+            background: #4357b8;
+            color: white;
+            text-decoration: none;
+            padding: 13px 18px;
+            border-radius: 8px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .links a:hover {
+            background: #293d91;
+        }
+
+        .empty {
+            color: #718096;
+            padding: 15px 0;
+        }
+
+        @media (max-width: 850px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 15px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Employment Analytics Dashboard</h1>
+        <p>SkillGap AI – Learner Employment Outcome Tracking</p>
+    </header>
+
+    <!-- DASHBOARD STATISTICS -->
+
+    <div class="cards">
+
+        <div class="card">
+            <p>Total Learners</p>
+            <div class="number">{{ total }}</div>
+        </div>
+
+        <div class="card">
+            <p>Employed Learners</p>
+            <div class="number">{{ employed }}</div>
+        </div>
+
+        <div class="card">
+            <p>Job Seekers</p>
+            <div class="number">{{ seeking }}</div>
+        </div>
+
+        <div class="card">
+            <p>Under Training</p>
+            <div class="number">{{ training }}</div>
+        </div>
+
+    </div>
+
+    <!-- EMPLOYMENT STATUS OVERVIEW -->
+
+    <div class="section">
+
+        <h2>Employment Status Overview</h2>
+
+        <div class="status-item">
+            <div class="status-label">
+                <span>Employed</span>
+                <span>{{ employed }} / {{ total }}</span>
+            </div>
+
+            <progress class="status-progress employed"
+                value="{{ (employed / total * 100) if total else 0 }}"
+                max="100"></progress>
+        </div>
+
+        <div class="status-item">
+            <div class="status-label">
+                <span>Job Seeking</span>
+                <span>{{ seeking }} / {{ total }}</span>
+            </div>
+
+            <progress class="status-progress seeking"
+                value="{{ (seeking / total * 100) if total else 0 }}"
+                max="100"></progress>
+        </div>
+
+        <div class="status-item">
+            <div class="status-label">
+                <span>Under Training</span>
+                <span>{{ training }} / {{ total }}</span>
+            </div>
+
+            <progress class="status-progress training"
+                value="{{ (training / total * 100) if total else 0 }}"
+                max="100"></progress>
+        </div>
+
+    </div>
+
+    <!-- LEARNER MANAGEMENT -->
+
+    <div class="section">
+
+        <h2>Registered Learners & Training Progress</h2>
+
+        {% if learners %}
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Learner Name</th>
+                        <th>Target Job Role</th>
+                        <th>Employment Status</th>
+                        <th>Skills Learned</th>
+                        <th>Progress</th>
+                        <th>Update Progress</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                {% for learner in learners %}
+
+                    <tr>
+
+                        <td>{{ learner.name }}</td>
+
+                        <td>{{ learner.job_role }}</td>
+
+                        <!-- UPDATE EMPLOYMENT STATUS -->
+
+                        <td>
+                            <form
+                                action="{{ url_for('update_status', learner_id=learner.id) }}"
+                                method="POST">
+
+                                <select name="status">
+
+                                    <option value="Job Seeking"
+                                    {% if learner.employment_status == 'Job Seeking' %}selected{% endif %}>
+                                        Job Seeking
+                                    </option>
+
+                                    <option value="Training"
+                                    {% if learner.employment_status == 'Training' %}selected{% endif %}>
+                                        Training
+                                    </option>
+
+                                    <option value="Employed"
+                                    {% if learner.employment_status == 'Employed' %}selected{% endif %}>
+                                        Employed
+                                    </option>
+
+                                </select>
+
+                                <button type="submit">Update Status</button>
+
+                            </form>
+                        </td>
+
+                        <!-- SKILLS LEARNED -->
+
+                        <td>
+                            {{ learner.skills_learned or 'Not added' }}
+                        </td>
+
+                        <!-- TRAINING PROGRESS -->
+
+                        <td>
+
+                            <strong>{{ learner.progress }}%</strong>
+
+                            <progress class="learner-progress"
+                                value="{{ learner.progress }}"
+                                max="100"></progress>
+
+                        </td>
+
+                        <!-- UPDATE PROGRESS -->
+
+                        <td>
+
+                            <form
+                                action="{{ url_for('update_progress', learner_id=learner.id) }}"
+                                method="POST">
+
+                                <input
+                                    type="text"
+                                    name="skills_learned"
+                                    placeholder="Example: Python, SQL"
+                                    value="{{ learner.skills_learned }}"
+                                    required>
+
+                                <input
+                                    type="number"
+                                    name="progress"
+                                    min="0"
+                                    max="100"
+                                    value="{{ learner.progress }}"
+                                    required>
+
+                                <button type="submit">Save Progress</button>
+
+                            </form>
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+            <p class="empty">No learners registered yet.</p>
+
+        {% endif %}
+
+    </div>
+
+    <!-- NAVIGATION -->
+
+    <div class="links">
+
+        <a href="/">← Back to Home</a>
+
+        <a href="/employment">+ Register Learner</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

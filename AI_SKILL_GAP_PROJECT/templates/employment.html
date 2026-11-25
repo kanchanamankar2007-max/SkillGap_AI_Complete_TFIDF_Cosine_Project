@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Tracking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Employment Outcome Tracking</h1>
+    <p>Register learners and track their employment progress.</p>
+
+    <form action="{{ url_for('add_learner') }}" method="POST">
+
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="Enter learner name" required>
+
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="Enter email" required>
+
+        <label>Interested Job Role</label>
+        <select name="job_role" required>
+            <option value="">Select job role</option>
+            {% for role in job_roles %}
+            <option value="{{ role }}">{{ role }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Register Learner</button>
+    </form>
+
+    <h2>Registered Learners</h2>
+
+    {% if learners %}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Job Role</th>
+            <th>Status</th>
+        </tr>
+
+        {% for learner in learners %}
+        <tr>
+            <td>{{ learner.name }}</td>
+            <td>{{ learner.email }}</td>
+            <td>{{ learner.job_role }}</td>
+            <td>{{ learner.employment_status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No learners registered yet.</p>
+    {% endif %}
+
+    <a href="/">Back to Home</a>
+</div>
+
+</body>
+</html>
